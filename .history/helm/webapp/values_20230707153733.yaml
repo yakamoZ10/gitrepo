@@ -1,0 +1,6 @@
+namespace: webapp-ardin
+configMapName: db-configmap
+secretName: db-secret
+ingressName: db-ingress
+serviceName: db-service
+deploymentName: db-deployment

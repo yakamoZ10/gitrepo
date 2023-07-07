@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gejm
+  namespace: nginx-ns
+data:
+   DB_HOSTNAME: db.hostname
+ 

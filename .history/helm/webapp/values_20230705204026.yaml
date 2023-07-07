@@ -1,0 +1,2 @@
+namespace: webapp-ardin
+configMapName: db-configmap
