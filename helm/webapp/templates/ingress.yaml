@@ -6,6 +6,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/group.name: common-alb
     alb.ingress.kubernetes.io/scheme : internet-facing
+    alb.ingress.kubernetes.io/target-type: 'ip'
 spec:
   ingressClassName: alb
   rules:
@@ -16,6 +17,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: my-service
+            name: {{.Values.serviceName}}
             port:
               number: 80 
