@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.deploymentName}}
+  namespace : {{ .Values.namespace}}
+  labels:
+    app: nginx
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 2
+  revisionHistoryLimit: 2  
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: 313422618945.dkr.ecr.eu-central-1.amazonaws.com/ardin-ick:dev
+        envFrom:
+          - configMapRef:
+             name: {{ .Values.configMapName }}
+          - secretRef:
+             name: {{ .Values.secretName }}
+             
